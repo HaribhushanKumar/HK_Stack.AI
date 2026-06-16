@@ -15,10 +15,20 @@ app.use(express.urlencoded({ extended: true }));
 // Routing Middleware
 app.use('/api', apiRoutes);
 
-// Root path message
-app.get('/', (req, res) => {
-    res.json({ message: 'MERN Portfolio Backend API running successfully.' });
-});
+const path = require('path');
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production' || process.env.SERVE_FRONTEND === 'true') {
+    app.use(express.static(path.join(__dirname, '../frontend/dist')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+    });
+} else {
+    // Root path message
+    app.get('/', (req, res) => {
+        res.json({ message: 'MERN Portfolio Backend API running successfully.' });
+    });
+}
 
 // Port and DB variables
 const PORT = process.env.PORT || 5000;
