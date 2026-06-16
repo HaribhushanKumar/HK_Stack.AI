@@ -110,21 +110,24 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## Production Deployment Guide
+## Production Deployment Guide (Unified Docker Setup)
 
-### Deployment for Backend (e.g., Render, Heroku)
-1. **Host Server Repository:** Upload the `backend/` folder codebase to your Git repository (GitHub/GitLab).
-2. **Launch Web Service:** Connect your repository to Render or similar cloud host. Set Environment to `Node`.
-3. **Environment Settings:** Configure environment keys matching backend `.env` variables under the Web Service settings.
-4. **Deploy Command:**
-   - Build Command: `npm install`
-   - Start Command: `node index.js`
+This repository is containerized to deploy the entire MERN stack (both React Frontend and Node.js Backend) on a **single Web Service** for a single live deployment URL.
 
-### Deployment for Frontend (e.g., Vercel, Netlify, Render)
-1. **Production Build:** Build the static asset bundle inside `frontend/` folder:
-   ```bash
-   npm run build
-   ```
-   This creates a static folder `dist/` containing HTML, CSS, and JS static components.
-2. **Update Service Base URL:** Before building, make sure that `frontend/src/services/api.js` points to your production backend URL (e.g., `https://your-backend-service.onrender.com/api`).
-3. **Host Static Assets:** Link your frontend codebase to Vercel/Netlify. Set framework preset to `Vite`, Build Command to `npm run build`, and Output Directory to `dist`.
+### One-Click Deployment to Render
+
+1. Go to **[dashboard.render.com](https://dashboard.render.com/)** and log in.
+2. Click **New** -> **Web Service**.
+3. Connect this GitHub repository: `https://github.com/HaribhushanKumar/HK_Stack.AI.git`.
+4. In the settings:
+   - **Environment/Runtime:** Select **Docker** (Render will automatically use the root [Dockerfile](file:///c:/Users/ranja/Desktop/portfolio/Dockerfile)).
+   - **Instance Type:** Select **Free**.
+5. Click **Advanced** and add the following **Environment Variables**:
+   - `NODE_ENV` = `production`
+   - `MONGODB_URI` = `mongodb+srv://Ranjan7852:Ranjan123@cluster0.ukchxhq.mongodb.net/portfolio_db?retryWrites=true&w=majority&appName=Cluster0`
+   - `JWT_SECRET` = `supersecretjwtkeyforauthtokens`
+   - `ADMIN_USERNAME` = `haribhushan7852@gmail.com`
+   - `ADMIN_PASSWORD` = `Ranjan@123`
+6. Click **Deploy Web Service**.
+
+Once built, Render will serve your entire web application at a single domain link!
