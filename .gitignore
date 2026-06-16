@@ -1,0 +1,17 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+
+# Local env files
+.env
+backend/.env
+
+# Database data directories
+mongodb_data/
+
+# Build outputs
+frontend/dist/
+
+# System files
+.DS_Store
+Thumbs.db
