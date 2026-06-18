@@ -1,5 +1,7 @@
 # Haribhushan Kumar - MERN Stack Portfolio & Admin Dashboard
 
+**Live Demo:** [https://hk-stack-ai.onrender.com](https://hk-stack-ai.onrender.com)
+
 A complete, production-ready, fully responsive personal portfolio and messages management admin portal engineered using the MERN Stack (**MongoDB, Express.js, React.js, Node.js**).
 
 ## Features
@@ -130,4 +132,4 @@ This repository is containerized to deploy the entire MERN stack (both React Fro
    - `ADMIN_PASSWORD` = `Ranjan@123`
 6. Click **Deploy Web Service**.
 
-Once built, Render will serve your entire web application at a single domain link!
+Once built, Render serves your entire web application at your live URL: [https://hk-stack-ai.onrender.com](https://hk-stack-ai.onrender.com)
