@@ -6,8 +6,84 @@ import profileImg from '../assets/profile.jpg';
 import { 
     FiArrowRight, FiMail, FiPhone, FiLinkedin, FiGithub, 
     FiSend, FiSearch, FiCode, FiCpu, FiDatabase, FiLayers,
-    FiUsers, FiBarChart2, FiCloud
+    FiUsers, FiBarChart2, FiCloud, FiBookOpen
 } from 'react-icons/fi';
+import { HeroBadge, SectionLabel, SkillTag, ProjectCategoryBadge, TechTag } from '../components/AnimatedBadge';
+
+const skillsData = [
+    {
+        category: "AI & Machine Learning",
+        icon: <FiCpu />,
+        skills: [
+            { name: "AI Machine learning", level: "Expert" },
+            { name: "Deep Learning", level: "Advanced" },
+            { name: "NLP", level: "Advanced" },
+            { name: "Generative AI", level: "Expert" },
+            { name: "RAG Pipelines", level: "Expert" },
+            { name: "OpenAI API", level: "Expert" },
+            { name: "Python Scripting", level: "Advanced" }
+        ]
+    },
+    {
+        category: "Frontend Engineering",
+        icon: <FiCode />,
+        skills: [
+            { name: "React.js", level: "Expert" },
+            { name: "HTML5 & CSS3", level: "Expert" },
+            { name: "JavaScript (ES6)", level: "Expert" },
+            { name: "Vite Scaffolds", level: "Advanced" },
+            { name: "SCSS Layouts", level: "Advanced" }
+        ]
+    },
+    {
+        category: "Backend & Database",
+        icon: <FiDatabase />,
+        skills: [
+            { name: "Node.js", level: "Expert" },
+            { name: "Express.js", level: "Expert" },
+            { name: "Flask APIs", level: "Advanced" },
+            { name: "Pinecone (Vector DB)", level: "Expert" },
+            { name: "MongoDB", level: "Expert" },
+            { name: "MySQL", level: "Advanced" },
+            { name: "DBMS Concepts", level: "Advanced" }
+        ]
+    },
+    {
+        category: "Data Analytics",
+        icon: <FiBarChart2 />,
+        skills: [
+            { name: "Python (Pandas / NumPy)", level: "Advanced" },
+            { name: "Power BI Dashboards", level: "Advanced" },
+            { name: "Jupyter Notebooks", level: "Advanced" },
+            { name: "ETL Pipelines", level: "Advanced" },
+            { name: "Web Scraping", level: "Expert" },
+            { name: "Data Visualization", level: "Advanced" },
+            { name: "Statistical Analysis", level: "Intermediate" }
+        ]
+    },
+    {
+        category: "DevOps & Deployment",
+        icon: <FiCloud />,
+        skills: [
+            { name: "Render", level: "Advanced" },
+            { name: "Railway", level: "Advanced" },
+            { name: "Docker", level: "Advanced" },
+            { name: "Kubernetes", level: "Intermediate" },
+            { name: "Git", level: "Expert" },
+            { name: "GitHub", level: "Expert" }
+        ]
+    },
+    {
+        category: "Soft Skills",
+        icon: <FiUsers />,
+        skills: [
+            { name: "Problem Solving", level: "Expert" },
+            { name: "Team Collaboration", level: "Expert" },
+            { name: "Time Management", level: "Advanced" },
+            { name: "Continuous Learning", level: "Expert" }
+        ]
+    }
+];
 
 const Home = () => {
     const { showToast } = useTheme();
@@ -17,7 +93,7 @@ const Home = () => {
     // ==========================================
     const [typingText, setTypingText] = useState('');
     const phrases = [
-        "Full Stack Developer",
+        "Full Stack Developer & AI Engineer",
         "AI & Machine Learning Engineer",
         "RAG & LLM Specialist",
         "MCA Graduate"
@@ -217,9 +293,7 @@ const Home = () => {
                         animate="visible"
                         variants={fadeInUp}
                     >
-                        <div className="hero-badge">
-                            <span></span>MCA Graduate
-                        </div>
+                        <HeroBadge text="MCA Graduate" />
                         <h1 className="hero-title">
                             Hi, I'm <br /><span className="gradient-text">Haribhushan Kumar</span>
                         </h1>
@@ -227,7 +301,7 @@ const Home = () => {
                             <span>{typingText}</span><span className="typewriter-cursor"></span>
                         </div>
                         <p className="hero-description">
-                            A focused MCA graduate and Full Stack Developer. Passionate about engineering production-grade web systems and integrating advanced AI components like custom RAG pipelines, generative integrations, and vector indexes.
+                            A focused MCA graduate, Full Stack Developer & AI Engineer. Passionate about engineering production-grade web systems and integrating advanced AI components like custom RAG pipelines, generative integrations, and vector indexes.
                         </p>
                         <div className="hero-ctas">
                             <a href="#projects" className="btn btn-primary">
@@ -260,8 +334,8 @@ const Home = () => {
             <section className="about-section" id="about">
                 <div className="section-container">
                     <div className="section-header">
-                        <span className="section-label font-bold text-center uppercase tracking-widest text-secondary-500 mb-2">My Profile</span>
-                        <h2 className="section-title text-center text-3xl font-extrabold tracking-tight">About Me</h2>
+                        <SectionLabel text="My Profile" icon={<FiUsers />} />
+                        <h2 className="section-title text-center text-3xl font-extrabold tracking-tight" style={{ marginTop: '12px' }}>About Me</h2>
                     </div>
 
                     <div className="about-grid" style={{ marginTop: '48px' }}>
@@ -345,88 +419,21 @@ const Home = () => {
             <section className="skills-section" id="skills">
                 <div className="section-container">
                     <div className="section-header">
-                        <span className="section-label">Core Capabilities</span>
-                        <h2 className="section-title">Technical Skills</h2>
+                        <SectionLabel text="Core Capabilities" icon={<FiLayers />} />
+                        <h2 className="section-title" style={{ marginTop: '12px' }}>Technical Skills</h2>
                     </div>
 
                     <div className="skills-grid" style={{ marginTop: '48px' }}>
-                        {/* Skills Box 1: AI & ML */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiCpu /> AI & Machine Learning</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">AI Machine learning</span>
-                                <span className="skill-tag">Deep Learning</span>
-                                <span className="skill-tag">NLP</span>
-                                <span className="skill-tag">Generative AI</span>
-                                <span className="skill-tag">RAG Pipelines</span>
-                                <span className="skill-tag">OpenAI API</span>
-                                <span className="skill-tag">Python Scripting</span>
+                        {skillsData.map((cat, idx) => (
+                            <div key={idx} className="glass-card skills-card" style={{ padding: '32px' }}>
+                                <h3 className="skills-category-title">{cat.icon} {cat.category}</h3>
+                                <div className="skills-list">
+                                    {cat.skills.map((skill, sIdx) => (
+                                        <SkillTag key={sIdx} text={skill.name} level={skill.level} />
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-
-                        {/* Skills Box 2: Frontend */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiCode /> Frontend Engineering</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">React.js</span>
-                                <span className="skill-tag">HTML5 & CSS3</span>
-                                <span className="skill-tag">JavaScript (ES6)</span>
-                                <span className="skill-tag">Vite Scaffolds</span>
-                                <span className="skill-tag">SCSS Layouts</span>
-                            </div>
-                        </div>
-
-                        {/* Skills Box 3: Backend & DB */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiDatabase /> Backend & Database</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">Node.js</span>
-                                <span className="skill-tag">Express.js</span>
-                                <span className="skill-tag">Flask APIs</span>
-                                <span className="skill-tag">Pinecone (Vector DB)</span>
-                                <span className="skill-tag">MongoDB</span>
-                                <span className="skill-tag">MySQL</span>
-                                <span className="skill-tag">DBMS Concepts</span>
-                            </div>
-                        </div>
-
-                        {/* Skills Box 4: Data Analytics */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiBarChart2 /> Data Analytics</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">Python (Pandas / NumPy)</span>
-                                <span className="skill-tag">Power BI Dashboards</span>
-                                <span className="skill-tag">Jupyter Notebooks</span>
-                                <span className="skill-tag">ETL Pipelines</span>
-                                <span className="skill-tag">Web Scraping</span>
-                                <span className="skill-tag">Data Visualization</span>
-                                <span className="skill-tag">Statistical Analysis</span>
-                            </div>
-                        </div>
-
-                        {/* Skills Box 5: DevOps & Deployment */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiCloud /> DevOps & Deployment</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">Render</span>
-                                <span className="skill-tag">Railway</span>
-                                <span className="skill-tag">Docker</span>
-                                <span className="skill-tag">Kubernetes</span>
-                                <span className="skill-tag">Git</span>
-                                <span className="skill-tag">GitHub</span>
-                            </div>
-                        </div>
-
-                        {/* Skills Box 6: Soft Skills */}
-                        <div className="glass-card skills-card" style={{ padding: '32px' }}>
-                            <h3 className="skills-category-title"><FiUsers /> Soft Skills</h3>
-                            <div className="skills-list">
-                                <span className="skill-tag">Problem Solving</span>
-                                <span className="skill-tag">Team Collaboration</span>
-                                <span className="skill-tag">Time Management</span>
-                                <span className="skill-tag">Continuous Learning</span>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -435,8 +442,8 @@ const Home = () => {
             <section className="projects-section" id="projects">
                 <div className="section-container">
                     <div className="section-header">
-                        <span className="section-label">Showcase</span>
-                        <h2 className="section-title">Featured Projects</h2>
+                        <SectionLabel text="Showcase" icon={<FiCode />} />
+                        <h2 className="section-title" style={{ marginTop: '12px' }}>Featured Projects</h2>
                     </div>
 
                     <div className="projects-filter-bar" style={{ marginTop: '48px' }}>
@@ -472,13 +479,13 @@ const Home = () => {
                                     variants={fadeInUp}
                                     style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '28px', position: 'relative', cursor: 'pointer' }}
                                 >
-                                    <span className="project-type-badge">{project.category === 'ai' ? 'AI / ML' : 'Full Stack'}</span>
-                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--text-primary)' }}>{project.title}</h3>
+                                    <ProjectCategoryBadge category={project.category} />
+                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--text-primary)', marginTop: '12px' }}>{project.title}</h3>
                                     <p className="project-description" style={{ flexGrow: 1 }}>{project.description}</p>
                                     
-                                    <div className="project-tech" style={{ marginTop: '16px' }}>
+                                    <div className="project-tech" style={{ marginTop: '16px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                                         {project.tech.map(t => (
-                                            <span key={t} className="project-tech-tag">{t}</span>
+                                            <TechTag key={t} text={t} />
                                         ))}
                                     </div>
 
@@ -498,8 +505,8 @@ const Home = () => {
             <section className="education-section" id="education">
                 <div className="section-container">
                     <div className="section-header">
-                        <span className="section-label">Academic Path</span>
-                        <h2 className="section-title">Timeline & Education</h2>
+                        <SectionLabel text="Academic Path" icon={<FiBookOpen />} />
+                        <h2 className="section-title" style={{ marginTop: '12px' }}>Timeline & Education</h2>
                     </div>
 
                     <div className="timeline" style={{ marginTop: '48px' }}>
@@ -548,8 +555,8 @@ const Home = () => {
             <section className="contact-section" id="contact">
                 <div className="section-container">
                     <div className="section-header">
-                        <span className="section-label">Get In Touch</span>
-                        <h2 className="section-title">Connect With Me</h2>
+                        <SectionLabel text="Get In Touch" icon={<FiMail />} />
+                        <h2 className="section-title" style={{ marginTop: '12px' }}>Connect With Me</h2>
                     </div>
 
                     <div className="contact-grid" style={{ marginTop: '48px' }}>
